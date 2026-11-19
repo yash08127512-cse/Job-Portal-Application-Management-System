@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerConnect | Job Portal</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/">Career<span>Connect</span></a>
+  <nav><a href="#jobs">Find Jobs</a><a href="#applications">My Applications</a><button id="adminToggle" class="nav-button">Employer</button></nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">YOUR NEXT OPPORTUNITY STARTS HERE</p>
+    <h1>Find a job that<br><span>moves you forward.</span></h1>
+    <p class="hero-copy">Explore opportunities, discover growing teams and keep your applications organised.</p>
+    <a class="primary-link" href="#jobs">Explore open roles</a>
+  </div>
+  <div class="hero-card"><div class="hero-icon">✦</div><p>Make your next move</p><strong>Build your future<br>one application at a time.</strong></div>
+</section>
+
+<main class="container">
+  <section id="jobs" class="section">
+    <div class="section-heading"><div><p class="eyebrow">OPPORTUNITIES</p><h2>Explore jobs</h2></div><span id="jobCount" class="muted"></span></div>
+    <form id="filterForm" class="filter-bar">
+      <input id="keyword" placeholder="Job title, company or keyword">
+      <input id="location" placeholder="Location">
+      <select id="jobType"><option value="">All job types</option><option>FULL_TIME</option><option>PART_TIME</option><option>INTERNSHIP</option><option>CONTRACT</option></select>
+      <button class="primary-button">Search</button>
+    </form>
+    <div id="jobsList" class="job-grid"><p>Loading jobs...</p></div>
+  </section>
+
+  <section id="applications" class="section applications-section">
+    <div class="section-heading"><div><p class="eyebrow">APPLICATION TRACKER</p><h2>Track your applications</h2></div></div>
+    <form id="applicationLookup" class="lookup-bar">
+      <input id="lookupEmail" type="email" placeholder="Enter the email used to apply" required>
+      <button class="dark-button">View applications</button>
+    </form>
+    <div id="applicationList" class="application-list"><p class="muted">Enter your email to view submitted applications.</p></div>
+  </section>
+
+  <section id="employerPanel" class="section employer-panel hidden">
+    <div class="section-heading"><div><p class="eyebrow">EMPLOYER TOOLS</p><h2>Post a job</h2></div></div>
+    <form id="jobForm" class="job-form">
+      <input name="title" placeholder="Job title" required>
+      <input name="company" placeholder="Company" required>
+      <input name="location" placeholder="Location" required>
+      <select name="jobType" required><option value="">Select job type</option><option>FULL_TIME</option><option>PART_TIME</option><option>INTERNSHIP</option><option>CONTRACT</option></select>
+      <input name="salary" type="number" min="0" step="1000" placeholder="Annual salary / stipend (INR)" required>
+      <textarea name="description" placeholder="Job description" required></textarea>
+      <button class="primary-button">Publish job</button>
+    </form>
+    <div class="section-heading admin-heading"><div><h2>Manage applications</h2></div></div>
+    <div id="adminApplications" class="application-list"><p class="muted">Applications will appear here.</p></div>
+  </section>
+</main>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-card">
+    <button id="closeModal" class="close-button" aria-label="Close">×</button>
+    <p class="eyebrow">APPLY FOR THIS ROLE</p><h2 id="modalJobTitle">Job application</h2>
+    <form id="applyForm">
+      <input type="hidden" name="jobId" id="applyJobId">
+      <label>Full name<input name="candidateName" required maxlength="120"></label>
+      <label>Email address<input name="email" type="email" required></label>
+      <label>Phone number<input name="phone" required></label>
+      <label>Resume link (Google Drive / portfolio)<input name="resumeLink" type="url" placeholder="https://"></label>
+      <label>Short cover note<textarea name="coverLetter" rows="3"></textarea></label>
+      <button class="primary-button full-width">Submit application</button>
+    </form>
+  </div>
+</div>
+<div id="toast" class="toast"></div>
+<footer><p>CareerConnect <span>·</span> A Java Full Stack practice project</p></footer>
+<script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS jobs (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(150) NOT NULL,
+    company VARCHAR(150) NOT NULL,
+    location VARCHAR(120) NOT NULL,
+    job_type VARCHAR(40) NOT NULL,
+    salary DECIMAL(12,2) NOT NULL,
+    description TEXT NOT NULL,
+    posted_date DATE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS applications (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    job_id BIGINT NOT NULL,
+    candidate_name VARCHAR(120) NOT NULL,
+    email VARCHAR(160) NOT NULL,
+    phone VARCHAR(25) NOT NULL,
+    resume_link VARCHAR(500),
+    cover_letter TEXT,
+    status VARCHAR(30) NOT NULL DEFAULT 'SUBMITTED',
+    applied_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_application_job FOREIGN KEY (job_id) REFERENCES jobs(id) ON DELETE CASCADE
+);
